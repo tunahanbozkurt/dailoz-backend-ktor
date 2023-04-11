@@ -30,8 +30,8 @@ fun Application.setupAuthentication() {
                     authorizeUrl = "https://accounts.google.com/o/oauth2/auth",
                     accessTokenUrl = "https://accounts.google.com/o/oauth2/token",
                     requestMethod = HttpMethod.Post,
-                    clientId = "265635337362-atqf6ivf1oh8si3s3cjubdfkjcshm4qh.apps.googleusercontent.com",
-                    clientSecret = "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",
+                    clientId = System.getenv("GOOGLE_CLIENT_ID"),
+                    clientSecret = System.getenv("GOOGLE_CLIENT_SECRET"),
                     defaultScopes = listOf("https://www.googleapis.com/auth/userinfo.profile"),
                 )
             }

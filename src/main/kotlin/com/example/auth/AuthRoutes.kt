@@ -18,13 +18,13 @@ fun Application.configureAuthRoutes(httpClient: HttpClient) {
             get("/callback") {
                 val principal: OAuthAccessTokenResponse.OAuth2? = call.principal()
                 call.sessions.set(UserSession(principal!!.state!!, principal.accessToken))
-                call.respondRedirect("/user-infos")
+                call.respondRedirect("/user-info")
             }
         }
         get("/") {
             call.respondRedirect("/login")
         }
-        get("/user-infos ") {
+        get("/user-info") {
             val userSession: UserSession? = call.sessions.get()
             if (userSession != null) {
                 val userInfo = httpClient.get("https://www.googleapis.com/oauth2/v2/userinfo") {
